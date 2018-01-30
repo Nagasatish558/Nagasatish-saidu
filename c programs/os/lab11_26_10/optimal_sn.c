@@ -1,0 +1,64 @@
+#include<stdio.h>
+main(){
+	int pf=0,n,f,i,j,k,remove,min;
+	printf("Enter the frames and no of words:");
+	scanf("%d%d",&f,&n);
+	int frame[f],list[n],next[f],flag=1,check=1;
+	printf("Enter the list");
+	for(i=0;i<n;i++)
+		scanf("%d",&list[i]);
+	for(i=0;i<f;i++)
+		frame[i]=-1;
+	for(i=0;i<n;i++){
+		if(flag){
+			for(j=0;j<f;j++){
+				if(frame[j]==list[i])
+					break;
+				if(frame[j]==-1){
+					pf++;
+					frame[j]=list[i];
+					if(j==f-1)
+						flag=0;
+					break;	
+				}
+			}
+		}
+		else{
+			check=1;
+			for(j=0;j<f;j++){
+				if(frame[j]==list[i]){
+					check=0;
+					break;
+				}
+			}
+			if(check==1){
+				for(j=0;j<f;j++){
+					next[j]=0;
+					for(k=i;k<n;k++){
+						if(frame[j]==list[k]){
+							if(k>i)
+								next[j]+=k-i;
+							else
+								next[j]+=i-k;
+							break;
+						}
+						if(n==k+1){
+							k=-1;
+							next[j]=n;
+						}
+					}
+				}
+				min=next[0];
+				for(j=0;j<f;j++){
+					if(min<frame[j]){
+						min=next[j];
+						remove=j;
+					}
+				}
+				frame[remove]=list[i];
+				pf++;
+			}
+		}
+	}
+	printf("page fault=%d",pf);
+}

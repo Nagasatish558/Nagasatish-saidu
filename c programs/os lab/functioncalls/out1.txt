@@ -1,0 +1,24 @@
+#include<unistd.h>
+#include<fcntl.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<stdio.h>
+main()
+main()
+{
+{
+	int fd,n;
+	int n,fd;
+	char ch[100];
+	char ch[1000];
+	printf("enter data");
+	fd=open("input1.txt",O_RDONLY);
+	n=read(0,ch,100);
+	n=read (fd,ch,100);
+write(1,ch,n);
+	write(1,ch,n);
+}
+
+	
+}
