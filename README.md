@@ -1,0 +1,3 @@
+# Nagasatish-saidu
+This are my practice files........
+i want to make repo with all my practice and lab files
